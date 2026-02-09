@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuditReport, AuditStatus } from '../types';
-import { ShieldCheck, AlertTriangle, XCircle, HelpCircle, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, AlertTriangle, XCircle, HelpCircle, CheckCircle2, Layers } from 'lucide-react';
 
 interface ReportCardProps {
   report: AuditReport;
@@ -50,6 +50,27 @@ export const ReportCard: React.FC<ReportCardProps> = ({ report }) => {
             <p className={`font-mono font-medium ${getStatusColor(report.status)}`}>
               STATUS: {report.status} • SCORE: {report.overallScore}/100
             </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Context */}
+      <div className="p-6 border-b border-slate-100">
+        <h3 className="text-sm font-semibold text-slate-500 uppercase mb-3 flex items-center gap-2">
+          Audit Context <Layers className="w-4 h-4" />
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+          <div className="border border-slate-200 rounded-lg p-3">
+            <p className="text-xs uppercase text-slate-500">Matched Product</p>
+            <p className="font-semibold text-slate-800 mt-1">{report.context.productName}</p>
+            <p className="text-xs text-slate-500">ID: {report.context.productId}</p>
+            <p className="text-xs text-slate-600 mt-2">Reason: {report.context.routingReason}</p>
+            <p className="text-xs text-slate-500">Confidence: {report.context.routingConfidence}</p>
+          </div>
+          <div className="border border-slate-200 rounded-lg p-3">
+            <p className="text-xs uppercase text-slate-500">Rule Set</p>
+            <p className="font-semibold text-slate-800 mt-1">{report.context.rulesName}</p>
+            <p className="text-xs text-slate-500">ID: {report.context.rulesId}</p>
           </div>
         </div>
       </div>
