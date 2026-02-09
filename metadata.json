@@ -1,0 +1,5 @@
+{
+  "name": "Content Auditor MVP",
+  "description": "A read-only content audit system that validates articles against rules and knowledge bases using Gemini 3 Pro.",
+  "requestFramePermissions": []
+}
